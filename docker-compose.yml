@@ -1,0 +1,25 @@
+version: '3.7'
+services: 
+  app:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    image: 'laravelapp'
+    ports:
+      - 8080:80
+    volumes:
+      - ./:/var/www/html
+
+  db:
+  
+      image: mariadb:10.1.19
+      ports:
+        - 8083:3306
+      volumes:
+        - ./mysql:/var/lib/mysql
+      environment:
+        MYSQL_ROOT_PASSWORD: wp
+        MYSQL_DATABASE: 'laraapp_db'
+
+
+
