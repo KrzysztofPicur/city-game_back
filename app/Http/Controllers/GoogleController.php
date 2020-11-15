@@ -9,12 +9,12 @@ use Illuminate\Http\Request;
 
 class GoogleController extends Controller
 {
-    public function redirectToFacebook() {
+    public function redirectToGoogle() {
         return Socialite::driver('google')->stateless()->redirect();
 
     }
 
-    public function handleFacebookCallback() {
+    public function handleGoogleCallback() {
 
         $user =  Socialite::driver('google')->stateless()->user();
 
