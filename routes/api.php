@@ -29,7 +29,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
     Route::post('logout',   [ AuthController::class, 'logout']);
 });
 
-Route::get('google',          [ FacebookController::class, 'redirectToGoogle']);
-Route::get('google/callback', [ FacebookController::class, 'handleGoogleCallback']);
+Route::get('google',          [ GoogleController::class, 'redirectToGoogle']);
+Route::get('google/callback', [ GoogleController::class, 'handleGoogleCallback']);
 
 
