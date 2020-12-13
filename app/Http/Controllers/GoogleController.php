@@ -27,24 +27,25 @@ class GoogleController extends Controller
 
         $user = User::where([
             'name'           => $name,
-            'token'          => $token,
             'email'          => $email,
-            'google_user_id' => $google_user_id
+            'google_user_id' => $google_user_id,
         ])->first();
 
 
-        $user = User::firstOrCreate(
-            ['name'           => $name ],
-            ['email'          => $email],
-            ['google_user_id' => $google_user_id]
-        );
+        $user = User::firstOrCreate([
+            'name'           => $name,
+            'email'          => $email,
+            'google_user_id' => $google_user_id,
+        ]);
+
 
 
         return response()->json([
-            'access_token' => $token,
-            'name'         => $name,
-            'email'        => $email,
-            'avatar'       => $avatar,
+            'access_token'   => $token,
+            'name'           => $name,
+            'email'          => $email,
+            'avatar'         => $avatar,
+            'google_user_id' => $google_user_id,
         ]);
     }
 }
