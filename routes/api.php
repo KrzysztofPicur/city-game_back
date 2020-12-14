@@ -4,6 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\StatsController;
+use App\Http\Controllers\PostController;
 
 
 /*
@@ -28,6 +30,13 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
     Route::get('profile',   [AuthController::class, 'profile']);
     Route::post('logout',   [AuthController::class, 'logout']);
 });
+
+Route::get('stats',[StatsController::class,'getAll']);
+Route::get('stat/{id}',[StatsController::class,'getStat']);
+Route::get('stats/{what}/{how}',[StatsController::class,'getOrderby']);
+
+Route::get('posts',[PostController::class,'getAll']);
+Route::get('post/{id}',[PostController::class,'getPost']);
 
 Route::get('google',          [GoogleController::class, 'redirectToGoogle']);
 Route::get('google/callback', [GoogleController::class, 'handleGoogleCallback']);
