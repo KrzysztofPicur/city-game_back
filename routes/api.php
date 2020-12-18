@@ -6,6 +6,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\StatsController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\FriendController;
+
 
 
 /*
@@ -35,8 +37,10 @@ Route::get('stats',[StatsController::class,'getAll']);
 Route::get('stat/{id}',[StatsController::class,'getStat']);
 Route::get('stats/{what}/{how}',[StatsController::class,'getOrderby']);
 
-Route::get('posts',[PostController::class,'getAll']);
-Route::get('post/{id}',[PostController::class,'getPost']);
+Route::get('posts/{idUser}',[PostController::class,'getPost']);
+
+Route::get('users/friends',[FriendController::class,'getAll']);
+Route::get('user/friend/{id}',[FriendController::class,'getUserFriend']);
 
 Route::get('google',          [GoogleController::class, 'redirectToGoogle']);
 Route::get('google/callback', [GoogleController::class, 'handleGoogleCallback']);

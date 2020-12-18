@@ -13,13 +13,11 @@ class PostController extends Controller
         $this->post = new Post(); 
     }
     
-    public function getAll()
+
+    public function getPost($userID)
     {
-        return $this->post->getAll();
+        return $this->post->getPost($userID);
     }
 
-    public function getPost($id)
-    {
-        return $this->post->getPost($id);
-    }
+    
 }

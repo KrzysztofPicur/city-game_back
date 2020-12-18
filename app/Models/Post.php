@@ -16,13 +16,10 @@ class Post extends Model
     protected $street;
 
 
-    public function getAll()
+    public function getPost($userID)
     {
-        return Post::join('users', 'users.id', '=', 'Posts.id_user')->get(['users.name','Posts.image','Posts.descriptions','Posts.city','Posts.street']);
-    }
-
-    public function getPost($id)
-    {
-        return Post::join('users', 'users.id', '=', 'Posts.id_user')->where('users.id',$id)->get(['users.name','Posts.image','Posts.descriptions','Posts.city','Posts.street']);
+        
+        return Post::get();
+        //SELECT id, image,descriptions FROM `Posts` WHERE id NOT IN ( SELECT post_id FROM `answer` WHERE user_id = 1 )
     }
 }
