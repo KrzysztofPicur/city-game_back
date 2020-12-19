@@ -5,10 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class answered extends Model
+class Answer extends Model
 {
     use HasFactory;
-
-    protected $id_user;
-    protected $id_post;
+    
+    protected $id;
+    protected $user_id;
+    protected $post_id;
 }

@@ -13,13 +13,8 @@ class Friend extends Model
     protected $idFriend;
 
 
-    public function getAll()
-    {
-        return Friend::all();
-    }
-
     public function getUserFriend($id)
     {
-        return Friend::join('users', 'users.id', '=', 'Friends.id_friend')->where('Friends.id_user',$id)->get('users.name');
+        return Friend::join('users', 'users.id', '=', 'Friends.friend_id')->where('Friends.user_id',$id)->get('users.name');
     }
 }

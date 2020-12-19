@@ -39,7 +39,6 @@ Route::get('stats/{what}/{how}',[StatsController::class,'getOrderby']);
 
 Route::get('posts/{idUser}',[PostController::class,'getPost']);
 
-Route::get('users/friends',[FriendController::class,'getAll']);
 Route::get('user/friend/{id}',[FriendController::class,'getUserFriend']);
 
 Route::get('google',          [GoogleController::class, 'redirectToGoogle']);

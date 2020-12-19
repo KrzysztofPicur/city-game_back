@@ -15,22 +15,22 @@ class Stats extends Model
 
     public function getAll()
     {
-        return Stats::join('users', 'users.id', '=', 'Stats.id_user')->get(['users.name','Stats.winCount','Stats.postCount']);
+        return Stats::join('users', 'users.id', '=', 'Stats.user_id')->get(['users.name','Stats.winCount','Stats.postCount']);
     }
 
     public function getStat($id)
     {
-        return Stats::join('users', 'users.id', '=', 'Stats.id_user')->where('users.id',$id)->get(['users.name','Stats.winCount','Stats.postCount']);
+        return Stats::join('users', 'users.id', '=', 'Stats.user_id')->where('users.id',$id)->get(['users.name','Stats.winCount','Stats.postCount']);
     }
     public function getOrderby($what,$how)
     {
-        if($how=='desc')
+        if($how=='desc' || $how=='DESC')
         {
-            return Stats::join('users', 'users.id', '=', 'Stats.id_user')->get(['users.name','Stats.winCount','Stats.postCount'])->sortByDesc($what);
+            return Stats::join('users', 'users.id', '=', 'Stats.user_id')->get(['users.name','Stats.winCount','Stats.postCount'])->sortByDesc($what);
         }
-        if($how=='asc')
+        if($how=='asc' || $how=='ASC')
         {
-            return Stats::join('users', 'users.id', '=', 'Stats.id_user')->get(['users.name','Stats.winCount','Stats.postCount'])->sortBy($what);
+            return Stats::join('users', 'users.id', '=', 'Stats.user_id')->get(['users.name','Stats.winCount','Stats.postCount'])->sortBy($what);
         }
     }
     

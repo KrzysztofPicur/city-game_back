@@ -18,8 +18,6 @@ class Post extends Model
 
     public function getPost($userID)
     {
-        
-        return Post::get();
-        //SELECT id, image,descriptions FROM `Posts` WHERE id NOT IN ( SELECT post_id FROM `answer` WHERE user_id = 1 )
+        return Post::whereNotIn('id',Answer::where('user_id',$userID)->get('post_id'))->get(['id', 'image','descriptions']);
     }
 }

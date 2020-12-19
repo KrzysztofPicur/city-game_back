@@ -12,11 +12,6 @@ class FriendController extends Controller
     public function __construct() {
         $this->friend = new Friend(); 
     }
-    
-    public function getAll()
-    {
-        return $this->friend->getAll();
-    }
 
     public function getUserFriend($id)
     {
