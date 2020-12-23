@@ -19,5 +19,13 @@ class PostController extends Controller
         return $this->post->getPost($userID);
     }
 
-    
+    public function addPost(Request $request)
+    {
+        return $this->post->addPost($request);
+    }
+
+    public function check(Request $request)
+    {
+        return $this->post->check($request);
+    }
 }

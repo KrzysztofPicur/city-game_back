@@ -17,4 +17,8 @@ class FriendController extends Controller
     {
         return $this->friend->getUserFriend($id);
     }
+    public function addFriend(Request $request)
+    {
+        return $this->friend->addFriend($request);
+    }
 }

@@ -33,5 +33,10 @@ class Stats extends Model
             return Stats::join('users', 'users.id', '=', 'Stats.user_id')->get(['users.name','Stats.winCount','Stats.postCount'])->sortBy($what);
         }
     }
+
+    public function set()
+    {
+        
+    }
     
 }
