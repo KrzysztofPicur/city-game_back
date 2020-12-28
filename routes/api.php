@@ -4,9 +4,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\GoogleController;
-use App\Http\Controllers\StatsController;
 use App\Http\Controllers\PostController;
-use App\Http\Controllers\FriendController;
+use App\Http\Controllers\CommentController;
+
 
 
 
@@ -41,6 +41,6 @@ Route::resource('posts', PostController::class);
 Route::get('profile/myposts', [PostController::class, 'getAllUserPosts']);
 
 
-Route::get('posts/{id}/comments',       [ CommentController::class, 'index']);
+Route::post('posts/{id}/comments',       [ CommentController::class, 'store']);
 
 

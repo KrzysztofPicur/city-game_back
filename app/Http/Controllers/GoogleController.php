@@ -40,6 +40,7 @@ class GoogleController extends Controller
             'email'          => $email,
             'password'       => $hashed_random_password,
             'google_user_id' => $google_user_id,
+            'avatar'         => $avatar,
         ]);
 
             $token = JWTAuth::fromUser($user);
