@@ -12,7 +12,7 @@ return [
     | location for this type of information, allowing packages to have
     | a conventional file to locate the various service credentials.
     |
-    */
+     */
 
     'mailgun' => [
         'domain' => env('MAILGUN_DOMAIN'),
@@ -31,10 +31,9 @@ return [
     ],
 
     'google' => [
-        'client_id'     => '330533625286-5673scc40rk9b1osng7un882f14bj3o1.apps.googleusercontent.com',
-        'client_secret' => 'scBN11677BJq3FyIu_LnbErL',
-        'redirect'      => 'http://127.0.0.1:8080/api/google/callback',
+        'client_id' => '330533625286-0qqr1nt2n6p7htk8tji36hespkfbm363.apps.googleusercontent.com',
+        'client_secret' => 'nfY1lwqiXtoU_K7t6FII9lJ2',
+        'redirect' => 'http://127.0.0.1:8080/api/google/callback',
     ],
-
 
 ];

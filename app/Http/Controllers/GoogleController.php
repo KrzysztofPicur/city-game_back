@@ -31,7 +31,9 @@ class GoogleController extends Controller
         $user = User::where([
             'name'           => $name,
             'email'          => $email,
+            'password'       => $hashed_random_password,
             'google_user_id' => $google_user_id,
+            'avatar'         => $avatar,
         ])->first();
 
 
@@ -54,3 +56,4 @@ class GoogleController extends Controller
         ]);
     }
 }
+

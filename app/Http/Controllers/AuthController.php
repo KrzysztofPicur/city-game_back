@@ -37,8 +37,6 @@ class AuthController extends Controller
             $validator->validated(),
             ['password' => bcrypt($request->password)]
         ));
-        
-        
 
         return response()->json([
             'message' => 'User successfully registered',
@@ -89,7 +87,6 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        $this->guard()->logout();
 
         return response()->json(['message' => 'Successfully logged out']);
     }
@@ -116,7 +113,7 @@ class AuthController extends Controller
         return response()->json([
             'access_token' => $token,
             'token_type' => 'bearer',
-            'expires_in' => $this->guard()->factory()->getTTL() * 1000000
+            'expires_in' => $this->guard()->factory()->getTTL() * 60
         ]);
     }
 

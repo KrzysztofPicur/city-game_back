@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Comment;
+use App\Models\Post;
 use JWTAuth;
 
 class CommentController extends Controller
@@ -20,7 +21,13 @@ class CommentController extends Controller
         $user = JWTAuth::parseToken()->authenticate();
         $user_id = $user->id;
 
-        
+        $answer  = null;
+        $correct = null;
+
+        $place  = Post::find($id)->get('place');
+        $arr    = (json_decode($place, true));
+        $street = $arr[0]['place'];
+
 
         $owner = $user->name;
 
@@ -29,10 +36,17 @@ class CommentController extends Controller
         $comment->comment_owner = $owner;
         $comment->post_id = $id;
 
+        $this->answer = $comment->body;
+
+        if(strcmp($street, $this->answer) == 0) {
+            $correct = true;
+        }else {
+            $correct = false;
+        }
+
         $comment->save();
 
-        return response()->json(['user_id' => $user_id, 'comment' => $comment]);
+        return response()->json(['user_id' => $user_id, 'comment' => $comment, 'Correct?' => $correct ]);
 
     } 
 }
-
