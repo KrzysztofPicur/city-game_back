@@ -33,18 +33,14 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
     Route::post('logout',       [AuthController::class, 'logout']);
 });
 
-Route::get('stats',             [StatsController::class,'getAll']);
-Route::get('stat/{id}',         [StatsController::class,'getStat']);
-Route::get('stats/{what}/{how}',[StatsController::class,'getOrderby']);
-
-Route::get('posts/{idUser}',    [PostController::class,'getPost']);
-Route::post('addpost',          [PostController::class,'addPost']);
-Route::post('checkPost',            [PostController::class,'check']);
-
-Route::get('user/friend/{id}',  [FriendController::class,'getUserFriend']);
-Route::post('addfriend',        [FriendController::class,'addFriend']);
 
 Route::get('google',            [GoogleController::class, 'redirectToGoogle']);
 Route::get('google/callback',   [GoogleController::class, 'handleGoogleCallback']);
+
+Route::resource('posts', PostController::class);
+Route::get('profile/myposts', [PostController::class, 'getAllUserPosts']);
+
+
+Route::get('posts/{id}/comments',       [ CommentController::class, 'index']);
 
 
