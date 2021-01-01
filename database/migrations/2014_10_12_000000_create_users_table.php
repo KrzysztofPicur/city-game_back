@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('avatar')->nullable();
             $table->integer('total_scores')->default(0);
             $table->integer('missed_answers')->default(0);
+            $table->float('rating')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

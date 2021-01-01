@@ -28,6 +28,7 @@ class User extends Authenticatable implements JWTSubject
         'google_user_id',
         'total_scores',
         'missed_answers',
+        'rating',
     ];
 
     /**

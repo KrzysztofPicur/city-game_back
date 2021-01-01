@@ -49,7 +49,21 @@ class CommentController extends Controller
 
         $comment->save();
 
-        return response()->json(['user_id' => $user_id, 'comment' => $comment, 'Correct?' => $correct ]);
+        $total = $user->total_scores;
+        $missing = $user->missed_answers;
+
+        if($missing != 0) {
+            $rating = fdiv($total,$missing);
+        }else {
+            $rating = 0;
+        }
+
+
+
+        $user->update(array('rating' => $rating));
+
+
+        return response()->json(['user_id' => $user_id, 'comment' => $comment, 'Correct?' => $correct , 'total' => $total, 'missing' => $missing, 'rating' => $rating ]);
 
     } 
 }

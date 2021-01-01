@@ -49,5 +49,7 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
     Route::get('users/top', [UserController::class, 'leaderBoard']);
     Route::get('users/bottom', [UserController::class, 'topIncorect']);
 
+    Route::get('users/ratings', [UserController::class, 'getBestRating']);
+
    
 

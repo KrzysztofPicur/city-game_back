@@ -9,12 +9,18 @@ class UserController extends Controller
 {
     //
     public function leaderBoard () {
-       return  User::select('name', 'avatar', 'total_scores')->orderByDesc('total_scores')->get();
+        return  User::select('name', 'avatar', 'total_scores')->orderByDesc('total_scores')->get();
     }
 
     public function topIncorect () {
-       return  User::select('name', 'avatar', 'missed_answers')->orderByDesc('missed_answers')->get();
+        return  User::select('name', 'avatar', 'missed_answers')->orderByDesc('missed_answers')->get();
 
 
     }
+
+    public function getBestRating () {
+        return  User::select('name', 'avatar', 'rating')->orderByDesc('rating')->get();
+
+    }
+
 }
