@@ -15,6 +15,7 @@ RUN apt-get update && apt-get install -y \
         unzip \
         libjpeg62-turbo-dev \ 
         libfreetype6-dev \
+        libmagickwand-dev \
 
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j$(nproc) gd \
@@ -26,7 +27,7 @@ RUN apt-get update && apt-get install -y \
     && docker-php-ext-install exif \
     && docker-php-source delete
 
-
+RUN pecl install imagick && docker-php-ext-enable imagick
 
 COPY .docker/vhost.conf /etc/apache2/sites-available/000-default.conf
 
