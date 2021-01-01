@@ -7,6 +7,7 @@ use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,5 +44,10 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
 
 
     Route::post('posts/{id}/comments',       [ CommentController::class, 'store']);
+
+    
+    Route::get('users/top', [UserController::class, 'leaderBoard']);
+    Route::get('users/bottom', [UserController::class, 'topIncorect']);
+
    
 
