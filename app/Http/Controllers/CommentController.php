@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Comment;
 use App\Models\Post;
+use App\Models\User;
 use JWTAuth;
 
 class CommentController extends Controller
@@ -40,8 +41,10 @@ class CommentController extends Controller
 
         if(strcmp($street, $this->answer) == 0) {
             $correct = true;
+            User::find($user_id)->increment('total_scores');
         }else {
             $correct = false;
+            User::find($user_id)->increment('missed_answers');
         }
 
         $comment->save();
