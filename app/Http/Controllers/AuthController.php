@@ -6,6 +6,10 @@ use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravolt\Avatar\Avatar;
+use Webpatser\Uuid\Uuid;
+use Intervention\Image\ImageManager;
+use Image;
 
 class AuthController extends Controller
 {
@@ -37,6 +41,42 @@ class AuthController extends Controller
             $validator->validated(),
             ['password' => bcrypt($request->password)]
         ));
+
+
+        //custom user avatar
+
+        if($request->file('avatar')) {
+
+            $user->avatar = $request->file('avatar');
+            $manager = new ImageManager(array('driver' => 'imagick'));
+
+            $uploadFolder        = 'users_avatars';
+            $image_uploaded_path = $user->avatar->store($uploadFolder, 'public');
+            $image_name = basename($image_uploaded_path);
+            $image_url  = Storage::disk('public')->url($image_uploaded_path);
+
+            $image = $manager->make('storage/users_avatars/'.$image_name)->resize(150, 150);
+            $image->save('storage/users_avatars/'.$image_name);
+            $user->avatar = $image_url;
+        }else {
+
+            //avatar base on user email
+
+            $image_name = Uuid::generate()->string;
+            $avatar = new Avatar;
+            $avatar->create($user->email)
+                   ->setShape('square')
+                   ->setDimension(150)
+                   ->setFontSize(82)
+                   ->setBackground('#0080ff')
+                   ->setForeground('#ffffff')
+                   ->save('storage/users_avatars/'.$image_name.'.png');
+            $image_url = Storage::disk('public')->url('users_avatars/'.$image_name.'.png');
+            $user->avatar = $image_url;
+
+        }
+
+        $user->save();
 
         return response()->json([
             'message' => 'User successfully registered',
