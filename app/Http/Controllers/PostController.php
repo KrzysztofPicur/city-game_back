@@ -77,7 +77,7 @@ class PostController extends Controller
         ]);
 
         $post = new Post;
-        $post->image       = $request->file('image');
+        $post->image = $request->file('image');
 
         $coordinates = new Coordinates;
 
@@ -94,7 +94,7 @@ class PostController extends Controller
         $post->body        = $request->body;
         $post->user_id     = $id;
         $post->post_author = $owner;
-        $post->place = $palce;
+        $post->place       = $palce;
 
 
         $uploadFolder        = 'post_images';

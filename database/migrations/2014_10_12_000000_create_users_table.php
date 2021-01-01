@@ -22,6 +22,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('google_user_id')->nullable();
             $table->string('avatar')->nullable();
+            $table->integer('total_scores')->default(0);
+            $table->integer('missed_answers')->default(0);
             $table->rememberToken();
             $table->timestamps();
         });

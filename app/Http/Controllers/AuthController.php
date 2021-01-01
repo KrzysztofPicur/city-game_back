@@ -6,6 +6,7 @@ use Validator;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Laravolt\Avatar\Avatar;
 use Webpatser\Uuid\Uuid;
 use Intervention\Image\ImageManager;
