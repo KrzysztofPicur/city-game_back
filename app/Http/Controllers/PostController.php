@@ -14,6 +14,7 @@ use Image;
 
 class PostController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -73,17 +74,22 @@ class PostController extends Controller
         $owner = $user->name;
 
         $validator = Validator::make($request->all(), [
-        'image' => 'required|image:jpeg,png,jpg,gif,svg|max:2048'
+        'image' => 'required|image:jpeg,png,jpg,gif,svg|max:10000'
         ]);
 
         $post = new Post;
-        $post->image = $request->file('image');
+        
+
+        if($validator->fails()) {
+            return response()->json(['message' => 'please insert image property']);
+        }
 
         $coordinates = new Coordinates;
 
         $coordinates->getGPS($post->image);
         $latitude  = $coordinates->getLatitiude();
         $longitude = $coordinates->getLongitude();
+
 
         $street = new Retriving_street();
         $street->setLocal($latitude, $longitude);
