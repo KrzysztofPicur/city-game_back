@@ -19,7 +19,7 @@ class CreateUsersTable extends Migration
             $table->string('name');
             $table->string('email');
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
+            $table->string('password')->nullable();
             $table->string('google_user_id')->nullable();
             $table->string('avatar')->nullable();
             $table->integer('total_scores')->default(0);

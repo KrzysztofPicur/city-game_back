@@ -78,7 +78,7 @@ class PostController extends Controller
         ]);
 
         $post = new Post;
-        
+        $post->image = $request->file('image');        
 
         if($validator->fails()) {
             return response()->json(['message' => 'please insert image property']);

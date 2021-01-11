@@ -40,7 +40,7 @@ class GoogleController extends Controller
         $user = User::firstOrCreate([
             'name'           => $name,
             'email'          => $email,
-            'password'       => $hashed_random_password,
+            //'password'       => $hashed_random_password,
             'google_user_id' => $google_user_id,
             'avatar'         => $avatar,
         ]);
