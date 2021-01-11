@@ -35,21 +35,30 @@ Route::group(['prefix' => 'auth', 'middleware' => 'api'], function () {
 
 });
 
-    Route::get('google',          [ GoogleController::class, 'redirectToGoogle']);
-    Route::get('google/callback', [ GoogleController::class, 'handleGoogleCallback']);
+Route::get('google',          [ GoogleController::class, 'redirectToGoogle']);
+Route::get('google/callback', [ GoogleController::class, 'handleGoogleCallback']);
 
 
-    Route::resource('posts', PostController::class);
+Route::middleware(['jwt.auth'])->group(function () {
+
+
+
+    Route::resource('posts', PostController::class)->middleware('jwt.auth');
     Route::get('profile/myposts', [PostController::class, 'getAllUserPosts']);
 
 
     Route::post('posts/{id}/comments',       [ CommentController::class, 'store']);
 
-    
+
     Route::get('users/top', [UserController::class, 'leaderBoard']);
     Route::get('users/bottom', [UserController::class, 'topIncorect']);
 
     Route::get('users/ratings', [UserController::class, 'getBestRating']);
 
-   
+
+});
+
+
+
+
 
