@@ -26,7 +26,7 @@ class PostController extends Controller
        $answer = null; 
 
         //return all posts with comments
-        $posts_with_comments =  Post::with('comments')->get();
+       $posts_with_comments =  Post::with('comments')->get();
 
         //Return all fields place from all posts
         //$place =  Post::all('place');
@@ -61,7 +61,7 @@ class PostController extends Controller
        //}
 
             //return response()->json(['Question' => $place, 'Answers' => $this->answer ]);
-        return response()->json(['Posts with comments' => $posts_with_comments ]);
+        return response()->json(['Posts with comments' => $posts_with_comments]);
     }
 
 
@@ -109,6 +109,8 @@ class PostController extends Controller
 
         $image_name = basename($image_uploaded_path);
         $image_url  = Storage::disk('public')->url($image_uploaded_path);
+
+        $post->image_url = $image_url;
 
 
         $post->save();

@@ -21,6 +21,7 @@ class CreatePostsTable extends Migration
             $table->string('post_author');
             $table->string('image')->nullable();
             $table->string('place')->nullable();
+            $table->string('image_url')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')

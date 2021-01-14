@@ -14,7 +14,8 @@ class Post extends Model
         'user_id',
         'post_author',
         'image',
-        'place'
+        'place',
+        'image_url'
     ];
     use HasFactory;
 
