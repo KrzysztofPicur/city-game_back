@@ -74,14 +74,16 @@ class PostController extends Controller
         $owner = $user->name;
 
         $validator = Validator::make($request->all(), [
-        'image' => 'required|image:jpeg,png,jpg,gif,svg|max:10000'
+            'title' => 'required|string',
+            'body' => 'required|string',
+            'image' => 'required|image:jpeg,png,jpg,gif,svg|max:10000'
         ]);
 
         $post = new Post;
         $post->image = $request->file('image');        
 
         if($validator->fails()) {
-            return response()->json(['message' => 'please insert image property']);
+            return response()->json(['message' => 'You must fill all fields']);
         }
 
         $coordinates = new Coordinates;

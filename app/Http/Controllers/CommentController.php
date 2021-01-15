@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Comment;
 use App\Models\Post;
 use App\Models\User;
@@ -21,6 +22,15 @@ class CommentController extends Controller
     {
         $user = JWTAuth::parseToken()->authenticate();
         $user_id = $user->id;
+
+        $validator = Validator::make($request->all(), [
+            'body' => 'required|string',
+        ]);
+
+        if($validator->fails()) {
+            return response()->json(['message' => 'This field must be completed']);
+        }
+
 
         $answer  = null;
         $correct = null;
