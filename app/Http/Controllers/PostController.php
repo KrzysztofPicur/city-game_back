@@ -61,7 +61,7 @@ class PostController extends Controller
        //}
 
             //return response()->json(['Question' => $place, 'Answers' => $this->answer ]);
-        return response()->json(['Posts with comments' => $posts_with_comments]);
+        return response()->json(['posts_with_comments' => $posts_with_comments]);
     }
 
 
@@ -118,7 +118,7 @@ class PostController extends Controller
         $post->save();
 
 
-        return response()->json(['id usera' => $id, 'post' => $post, 'image_name' => $image_name, 'image_url' => $image_url, 'latitude' => $latitude, 'longitude' => $longitude, 'steet_name' => $street ]);
+        return response()->json(['user_id' => $id, 'post' => $post, 'image_name' => $image_name, 'image_url' => $image_url, 'latitude' => $latitude, 'longitude' => $longitude, 'steet_name' => $street ]);
 
     }
 
