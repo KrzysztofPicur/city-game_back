@@ -140,6 +140,7 @@ class PostController extends Controller
     public function destroy($id)
     {
         //
+        return response()->json(['message'=> 'post_id = ' . $id. ' has been deleted'])
     }
 
     public function getAllUserPosts() {
@@ -149,7 +150,7 @@ class PostController extends Controller
         $all_posts = Post::with('user')->get();
         $all_posts = $user->posts()->get();
 
-        return response()->json(['my all posts' => $all_posts ]);
+        return response()->json(['my_all_posts' => $all_posts ]);
 
     }
 
