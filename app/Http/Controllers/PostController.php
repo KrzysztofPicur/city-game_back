@@ -142,7 +142,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
         //
-        return response()->json(['message'=> 'post_id = ' . $id. ' has been deleted'])
+        return response()->json(['message'=> 'post_id = ' . $id. ' has been deleted']);
     }
 
     public function getAllUserPosts() {
