@@ -20,7 +20,7 @@ class CommentController extends Controller
 
     public function store ($id, Request $request)
     {
-        $user = JWTAuth::parseToken()->authenticate();
+        $user    = JWTAuth::parseToken()->authenticate();
         $user_id = $user->id;
 
         $validator = Validator::make($request->all(), [
@@ -68,10 +68,7 @@ class CommentController extends Controller
             $rating = 0;
         }
 
-
-
         $user->update(array('rating' => $rating));
-
 
         return response()->json(['user_id' => $user_id, 'comment' => $comment, 'isCorrect' => $correct , 'total' => $total, 'missing' => $missing, 'rating' => $rating ]);
 

@@ -23,45 +23,10 @@ class PostController extends Controller
     public function index()
     {
 
-       $answer = null; 
+        $posts_with_comments =  Post::with('comments')->get();
 
-        //return all posts with comments
-       $posts_with_comments =  Post::with('comments')->get();
-
-        //Return all fields place from all posts
-        //$place =  Post::all('place');
-
-        //Return field place from Post id=1;
-       //return $place = Post::find(1)->get('place');
-       //$place = Post::find(1)->get('place');
-       //return $place;
-       //$arr = (json_decode($place, true));
-       //$street = $arr[0]['place'];
-
-       //return $street;
-       //return print_r($arr);
-
-        //access to comment property from posts
-        //return all comments from Post when post_id id=1;
-        //$comments = Post::find(1)->comments;
-
-       //foreach ( $comments as $comment ) {
-           //$this->answer = $comment->body;
-            ////return response()->json(['Answers' => $comment->body ]);
-       //}
-
-       //return $this->answer;
-       //return $place;
-
-       //if(strcmp($street, $this->answer) == 0) {
-           //return response()->json(['Result' => "Correct"]);
-       //}else {
-           //return response()->json(['Result' => "Uncorrect"]);
-
-       //}
-
-            //return response()->json(['Question' => $place, 'Answers' => $this->answer ]);
         return response()->json(['posts_with_comments' => $posts_with_comments]);
+
     }
 
 
@@ -75,7 +40,7 @@ class PostController extends Controller
 
         $validator = Validator::make($request->all(), [
             'title' => 'required|string',
-            'body' => 'required|string',
+            'body'  => 'required|string',
             'image' => 'required|image:jpeg,png,jpg,gif,svg|max:10000'
         ]);
 
