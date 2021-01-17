@@ -73,7 +73,7 @@ class CommentController extends Controller
         $user->update(array('rating' => $rating));
 
 
-        return response()->json(['user_id' => $user_id, 'comment' => $comment, 'Correct?' => $correct , 'total' => $total, 'missing' => $missing, 'rating' => $rating ]);
+        return response()->json(['user_id' => $user_id, 'comment' => $comment, 'isCorrect' => $correct , 'total' => $total, 'missing' => $missing, 'rating' => $rating ]);
 
     } 
 }
